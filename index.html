@@ -56,29 +56,105 @@ h1{font-size:clamp(3.5rem,8vw,6.7rem);line-height:.94;letter-spacing:-.085em;mar
 .project h3{margin-top:18px}
 @keyframes coverSweep{0%{left:-45%;opacity:0}25%{opacity:1}100%{left:130%;opacity:0}}
 @media(max-width:760px){.projecttop{margin:-22px -22px 0;padding:18px 22px;min-height:102px}}
-/* Star-map navigation */
-.constellation-section{padding:8px 0 30px}
-.constellation-shell{display:grid;grid-template-columns:.78fr 1.55fr;gap:18px;align-items:center;padding:25px;border:1px solid #ffffff18;border-radius:22px;background:radial-gradient(ellipse at 8% 0%,#8b5cf61c,transparent 48%),linear-gradient(125deg,#111322dc,#0b0d18dc);overflow:hidden}
-.constellation-copy h2{font-size:clamp(1.8rem,3.2vw,2.55rem);margin:11px 0;letter-spacing:-.07em;line-height:1.05}
-.constellation-copy p{color:var(--muted);font-size:.8rem;line-height:1.75;margin:0}
-.constellation-map{height:230px;position:relative;overflow:hidden;border:1px solid #ffffff12;border-radius:17px;background:radial-gradient(ellipse at 50% 50%,#8b5cf610,transparent 65%),#080a13}
-.constellation-map:before,.constellation-map:after{content:"";position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 10px 2px #a78bfa;opacity:.8}
-.constellation-map:before{left:18%;top:20%}.constellation-map:after{right:12%;bottom:18%;background:var(--cyan);box-shadow:0 0 11px 2px var(--cyan)}
+/* Animated constellation route */
+.constellation-section{padding:16px 0 42px}
+.constellation-shell{position:relative;isolation:isolate;display:grid;grid-template-columns:.76fr 1.45fr;gap:28px;align-items:center;min-height:330px;padding:30px;border:1px solid #ffffff1c;border-radius:26px;overflow:hidden;background:radial-gradient(ellipse at 6% 0%,#8b5cf625,transparent 48%),radial-gradient(ellipse at 92% 100%,#06b6d416,transparent 42%),linear-gradient(135deg,#111322f2,#090b16f2);box-shadow:0 30px 90px #0005}
+.constellation-shell:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;pointer-events:none;background-image:radial-gradient(#ffffffaa .7px,transparent .7px);background-size:33px 33px;mask-image:linear-gradient(110deg,#000,transparent 70%)}
+.constellation-copy{position:relative;z-index:2}
+.constellation-copy .eyebrow{margin-bottom:17px;font-size:.62rem}
+.constellation-copy h2{font-size:clamp(1.9rem,3.2vw,2.8rem);margin:11px 0 14px;letter-spacing:-.075em;line-height:1.02}
+.constellation-copy p{max-width:340px;color:var(--muted);font-size:.82rem;line-height:1.8;margin:0}
+.path-prompt{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:9px 12px;border:1px solid #ffffff1a;border-radius:999px;background:#ffffff06;color:#aeb3c8;font: .58rem "DM Mono",monospace;letter-spacing:.1em}
+.path-prompt span:last-child{color:var(--cyan);font-size:.85rem}
+.constellation-map{height:292px;position:relative;overflow:hidden;border:1px solid #ffffff17;border-radius:20px;background:radial-gradient(ellipse at 50% 50%,#8b5cf618,transparent 65%),linear-gradient(145deg,#080a13,#0b0d19)}
+.constellation-map:before,.constellation-map:after{content:"";position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px #a78bfa;opacity:.85}
+.constellation-map:before{left:8%;top:17%}
+.constellation-map:after{right:7%;bottom:17%;background:var(--cyan);box-shadow:0 0 12px 3px var(--cyan)}
 .constellation-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.constellation-lines path{fill:none;stroke:#a78bfa78;stroke-width:1.2;stroke-dasharray:5 7;vector-effect:non-scaling-stroke;animation:constellationFlow 18s linear infinite}
-.constellation-node{position:absolute;left:var(--node-x);top:var(--node-y);transform:translate(-50%,-50%);z-index:1;min-width:105px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;padding:8px;color:var(--text);transition:transform .25s ease}
-.constellation-node:hover{transform:translate(-50%,-55%)}
-.constellation-core{width:43px;height:43px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--node-color) 78%,transparent);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--node-color) 35%,#111322),#0d0f1c 72%);color:#fff;font: .65rem "DM Mono",monospace;box-shadow:0 0 22px color-mix(in srgb,var(--node-color) 42%,transparent);transition:box-shadow .25s,scale .25s}
-.constellation-node:hover .constellation-core{scale:1.14;box-shadow:0 0 32px color-mix(in srgb,var(--node-color) 68%,transparent)}
-.constellation-label{font-size:.72rem;font-weight:800}.constellation-label small{display:block;margin-top:3px;color:#9da2b8;font-size:.61rem;font-weight:500}
-@keyframes constellationFlow{to{stroke-dashoffset:-120}}
-@media(max-width:760px){.constellation-section{padding:8px 0 18px}.constellation-shell{grid-template-columns:1fr;padding:20px}.constellation-map{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:14px}.constellation-lines{display:none}.constellation-map:before,.constellation-map:after{display:none}.constellation-node{position:static;transform:none;min-width:0;flex-direction:row;justify-content:flex-start;text-align:left;padding:9px;border:1px solid #ffffff12;border-radius:12px;background:#ffffff05}.constellation-node:hover{transform:translateY(-2px)}.constellation-core{width:36px;height:36px;flex:none}.constellation-label small{font-size:.58rem}}
-@media(max-width:420px){.constellation-map{grid-template-columns:1fr}}
+.constellation-lines path{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.route-halo{stroke:#8b5cf6;stroke-width:10;opacity:.22;filter:blur(5px)}
+.route-track{stroke:#a78bfa80;stroke-width:1.2;stroke-dasharray:2 9}
+.route-signal{stroke:url(#route-stroke);stroke-width:2.3;stroke-dasharray:11 23;filter:drop-shadow(0 0 7px #a78bfa);animation:routeDash 8s linear infinite}
+.constellation-node{position:absolute;left:var(--node-x);top:var(--node-y);transform:translate(-50%,-50%);z-index:1;width:clamp(120px,17vw,156px);min-height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:12px 10px;border:1px solid color-mix(in srgb,var(--node-color) 42%,#ffffff18);border-radius:18px;background:linear-gradient(145deg,#151827f2,#0c0e19f5);color:var(--text);text-align:center;box-shadow:0 13px 34px #0007,0 0 25px color-mix(in srgb,var(--node-color) 13%,transparent);backdrop-filter:blur(14px);transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.constellation-node:hover{transform:translate(-50%,-56%);z-index:3;border-color:color-mix(in srgb,var(--node-color) 78%,white 10%);box-shadow:0 19px 38px #0008,0 0 34px color-mix(in srgb,var(--node-color) 30%,transparent)}
+.constellation-core{position:relative;width:43px;height:43px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--node-color) 82%,transparent);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--node-color) 34%,#111322),#0a0c17 74%);color:#fff;font:.68rem "DM Mono",monospace;box-shadow:0 0 23px color-mix(in srgb,var(--node-color) 46%,transparent);transition:transform .3s,box-shadow .3s}
+.constellation-core:after{content:"";position:absolute;inset:-6px;border:1px solid color-mix(in srgb,var(--node-color) 34%,transparent);border-radius:50%;animation:nodeRipple 3.4s ease-out infinite}
+.constellation-node:hover .constellation-core{transform:scale(1.12);box-shadow:0 0 32px color-mix(in srgb,var(--node-color) 70%,transparent)}
+.constellation-label strong{display:block;font-size:.74rem;letter-spacing:.01em}
+.constellation-label small{display:block;margin-top:4px;color:#9da2b8;font-size:.61rem;font-weight:500}
+@keyframes routeDash{to{stroke-dashoffset:-272}}
+@keyframes nodeRipple{0%,100%{transform:scale(.9);opacity:.68}55%{transform:scale(1.18);opacity:.12}}
+@media(max-width:760px){.constellation-section{padding:10px 0 28px}.constellation-shell{grid-template-columns:1fr;gap:20px;padding:20px;border-radius:22px}.constellation-copy h2{font-size:clamp(2rem,8vw,2.75rem)}.path-prompt{margin-top:16px}.constellation-map{height:auto;min-height:0;display:grid;gap:10px;padding:14px 14px 14px 51px}.constellation-lines{display:none}.constellation-map:before{left:31px;top:27px;bottom:27px;width:1px;height:auto;border-radius:0;background:repeating-linear-gradient(to bottom,#a78bfa9c 0 4px,transparent 4px 10px);box-shadow:0 0 12px #8b5cf677}.constellation-map:after{display:none}.constellation-node{position:relative;left:auto;top:auto;transform:none;width:100%;min-height:68px;display:grid;grid-template-columns:47px 1fr;justify-items:start;gap:12px;padding:10px 13px;text-align:left;border-radius:15px;background:#111421d9}.constellation-node:hover{transform:translateX(4px)}.constellation-core{width:39px;height:39px}.constellation-label{text-align:left}.constellation-label strong{font-size:.76rem}.constellation-label small{font-size:.63rem}}
+@media(max-width:420px){.constellation-shell{padding:17px}.constellation-map{padding-right:10px}.constellation-copy .eyebrow{font-size:.57rem}}
+
 @media(max-width:760px){.wrap{width:calc(100% - 30px)}.nav{height:65px;position:relative}.menu-toggle{display:inline-flex}.navlinks{display:none;position:absolute;top:64px;left:0;right:0;padding:14px;border:1px solid var(--line);border-radius:14px;background:#0d0f1df5;box-shadow:0 18px 36px #0008;flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px;border-radius:8px}.navlinks a:hover{background:#ffffff0a}.hero{grid-template-columns:1fr;padding:65px 0 45px;min-height:auto}.hero h1{font-size:clamp(3.5rem,16vw,5.5rem)}.art{min-height:320px}.orb{width:230px}.initial{font-size:4.5rem}.f1{top:20px}.f2{bottom:20px}.section{padding:65px 0}.head{display:block}.note{margin-top:15px}.grid2,.projects,.skills{grid-template-columns:1fr}.vybe-grid{grid-template-columns:1fr}.vybe-stage{min-height:350px}.vybe-preview-body{grid-template-columns:1fr .75fr;min-height:220px}.vybe-thinking{grid-template-columns:1fr;gap:8px}.glass{padding:22px}.event{grid-template-columns:1fr;gap:8px}.contact{display:block;padding:25px}.contactactions{margin-top:22px;flex-direction:row;flex-wrap:wrap}footer{flex-direction:column}}
+/* One-time cinematic portfolio entrance */
+body.entry-active{overflow:hidden}
+.entry-intro{position:fixed;inset:0;z-index:1000;display:none;place-items:center;overflow:hidden;background:#070812;color:var(--text);opacity:0;visibility:hidden;pointer-events:none}
+.entry-intro.is-running{display:grid;visibility:visible;opacity:1;pointer-events:auto}
+.entry-intro.is-leaving{opacity:0;pointer-events:none;transition:opacity .52s cubic-bezier(.2,.75,.25,1)}
+.entry-intro:before{content:"";position:absolute;inset:-30%;background:radial-gradient(ellipse at 50% 42%,#6d44dd30,transparent 34%),radial-gradient(ellipse at 20% 80%,#08b8cf18,transparent 30%);animation:introAurora 8s ease-in-out infinite alternate}
+.entry-intro:after{content:"";position:absolute;inset:0;opacity:.15;background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse at center,#000,transparent 77%)}
+.entry-skip{position:fixed;z-index:3;top:22px;right:24px;display:inline-flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #ffffff2a;border-radius:999px;background:#111322cc;color:#e6e6f3;font:600 .72rem Manrope,system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(12px)}
+.entry-skip:hover{border-color:#67e8f9a0;color:#67e8f9}
+.entry-frame{position:relative;z-index:1;width:min(760px,calc(100% - 34px));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 12px}
+.entry-mark-wrap{position:relative;width:min(560px,86vw);aspect-ratio:2.35/1;display:grid;place-items:center;perspective:700px}
+.entry-route{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.entry-route-line{fill:none;stroke:#a78bfa91;stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;stroke-linecap:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px #8b5cf6);animation:entryTrace 1.1s .12s cubic-bezier(.35,.03,.25,1) forwards}
+.entry-star{fill:#effdff;opacity:0;filter:drop-shadow(0 0 7px #67e8f9);animation:entryStar .45s ease-out forwards}
+.entry-star-a{animation-delay:.18s}.entry-star-b{animation-delay:.52s}.entry-star-c{animation-delay:.78s}.entry-star-d{animation-delay:1.06s}
+.entry-ring{position:absolute;left:50%;top:50%;width:120px;height:120px;border:1px solid #a78bfa62;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 32px #8b5cf628}
+.entry-ring-a{animation:ringTurn 9s linear infinite}
+.entry-ring-b{width:158px;height:158px;border-color:#67e8f958;transform:translate(-50%,-50%) rotateX(64deg) rotate(-22deg);animation:ringTurn 13s linear infinite reverse}
+.entry-monogram{position:relative;z-index:2;width:96px;height:96px;display:grid;place-items:center;border:1px solid #c4b5fd9c;border-radius:50%;background:radial-gradient(circle at 34% 27%,#a78bfa,#251a50 72%);color:#fff;font-size:3rem;font-weight:800;letter-spacing:-.1em;padding-right:5px;box-shadow:0 0 55px #8b5cf666,inset -12px -12px 26px #050610;opacity:0;animation:monogramArrive .78s .42s cubic-bezier(.16,1,.3,1) forwards}
+.entry-kicker{margin:13px 0 10px;color:var(--cyan);font:500 .62rem "DM Mono",monospace;letter-spacing:.18em;opacity:0;animation:entryFade .55s .68s ease forwards}
+.entry-title{margin:0;font-size:clamp(3.2rem,9vw,6.3rem);line-height:.86;letter-spacing:-.09em}
+.entry-title>span{display:block;overflow:hidden;clip-path:inset(0 0 100% 0);animation:entryWord .72s cubic-bezier(.2,.8,.2,1) forwards}
+.entry-title>span:first-child{animation-delay:.72s}.entry-title>span:last-child{animation-delay:.9s}
+.entry-caption{margin:17px 0 22px;color:#aeb3c8;font-size:.83rem;line-height:1.6;opacity:0;animation:entryFade .62s 1.15s ease forwards}
+.entry-progress{width:170px;height:2px;overflow:hidden;border-radius:4px;background:#ffffff1c}
+.entry-progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#8b5cf6,#67e8f9);box-shadow:0 0 12px #67e8f9;animation:introProgress 2.2s .1s linear forwards}
+.entry-intro.is-leaving .entry-frame{transform:translateY(-12px);transition:transform .52s cubic-bezier(.2,.75,.25,1)}
+@keyframes entryTrace{to{stroke-dashoffset:0}}
+@keyframes entryStar{to{opacity:1}}
+@keyframes ringTurn{to{rotate:360deg}}
+@keyframes monogramArrive{0%{opacity:0;transform:scale(.42) rotate(-32deg);filter:blur(10px)}72%{opacity:1;transform:scale(1.08) rotate(4deg);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes entryWord{to{clip-path:inset(0)}}
+@keyframes entryFade{to{opacity:1}}
+@keyframes introProgress{to{width:100%}}
+@keyframes introAurora{to{transform:translate3d(2%, -2%, 0) scale(1.08)}}
+body.entry-active .hero>div:first-child .eyebrow,body.entry-active .hero h1,body.entry-active .hero>div:first-child>p,body.entry-active .hero .actions .btn:first-child,body.entry-active .hero .actions .btn:nth-child(2),body.entry-active .hero .art,body.entry-active .orb,body.entry-active .float,body.entry-active .hero h1:after{animation:none!important}
+body.entry-finished .hero>div:first-child .eyebrow{animation:heroEnter .62s .04s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .hero h1{animation:cinematicName 1.05s .12s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .hero h1:after{animation:nameSweep 1.35s .55s ease-out both}
+body.entry-finished .hero>div:first-child>p{animation:heroEnter .7s .25s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .hero .actions .btn:first-child{animation:heroEnter .62s .38s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .hero .actions .btn:nth-child(2){animation:heroEnter .62s .5s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .hero .art{animation:artEnter 1.05s .08s cubic-bezier(.2,.8,.2,1) both}
+body.entry-finished .orb{animation:float 6s ease-in-out infinite,orbPulse 4.5s ease-in-out infinite,orbEntry .95s .25s cubic-bezier(.16,1,.3,1) both}
+body.entry-finished .float{animation:badgePop .7s .65s cubic-bezier(.16,1,.3,1) both,float 5s ease-in-out 1.35s infinite,badgeGlow 5s ease-in-out 1.35s infinite}
+body.entry-finished .f2{animation-delay:.9s,-.5s,.9s}
+@media(max-width:600px){.entry-skip{top:14px;right:14px}.entry-frame{padding:24px 4px}.entry-mark-wrap{width:min(420px,91vw)}.entry-monogram{width:78px;height:78px;font-size:2.5rem}.entry-ring{width:100px;height:100px}.entry-ring-b{width:132px;height:132px}.entry-title{font-size:clamp(3.1rem,14vw,4.7rem)}.entry-caption{max-width:285px;font-size:.76rem}}
+@media(prefers-reduced-motion:reduce){.entry-intro.is-running{display:none!important}body.entry-active{overflow:auto}}
+
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<div class="entry-intro" id="entry-intro" role="dialog" aria-modal="true" aria-labelledby="entry-title" aria-describedby="entry-caption">
+<button class="entry-skip" type="button">Skip intro <span aria-hidden="true">↗</span></button>
+<div class="entry-frame">
+<div class="entry-mark-wrap" aria-hidden="true">
+<div class="entry-ring entry-ring-a"></div><div class="entry-ring entry-ring-b"></div>
+<svg class="entry-route" viewBox="0 0 520 230" preserveAspectRatio="none"><path class="entry-route-line" d="M24 156 C92 156 108 56 194 56 S269 177 328 157 S413 56 496 83"/><circle class="entry-star entry-star-a" cx="24" cy="156" r="4"/><circle class="entry-star entry-star-b" cx="194" cy="56" r="4"/><circle class="entry-star entry-star-c" cx="328" cy="157" r="4"/><circle class="entry-star entry-star-d" cx="496" cy="83" r="4"/></svg>
+<div class="entry-monogram">T.</div>
+</div>
+<p class="entry-kicker">CURIOUS MIND · CREATIVE BUILDER</p>
+<h2 class="entry-title" id="entry-title"><span>Taranpreet</span><span>Singh<span class="gradient">.</span></span></h2>
+<p class="entry-caption" id="entry-caption">Curiosity in motion. AI/ML learning, digital ideas, creative technology.</p>
+<div class="entry-progress" aria-hidden="true"><i></i></div>
+</div>
+</div>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <div class="grid" aria-hidden="true"></div>
 <nav aria-label="Main navigation"><div class="wrap nav"><a class="brand" href="#home" aria-label="Taranpreet Singh, home">TARAN<b>.</b></a><button class="menu-toggle" type="button" aria-controls="navlinks" aria-expanded="false">Menu</button><div class="navlinks" id="navlinks"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#certificate">Certificate</a></div><a class="navbtn" href="#contact">Connect ↗</a></div></nav>
@@ -90,13 +166,18 @@ h1{font-size:clamp(3.5rem,8vw,6.7rem);line-height:.94;letter-spacing:-.085em;mar
 
 <section class="constellation-section wrap reveal" aria-labelledby="path-title">
 <div class="constellation-shell">
-<div class="constellation-copy"><div class="kicker">Explore my portfolio</div><h2 id="path-title">Pick a point.<br><span class="gradient">Find your path.</span></h2><p>Four quick routes through what I’m learning and building.</p></div>
-<nav class="constellation-map" aria-label="Portfolio sections">
-<svg class="constellation-lines" viewBox="0 0 900 230" preserveAspectRatio="none" aria-hidden="true"><path d="M82 145 C155 145 190 62 285 62 S420 155 505 145 S655 68 805 75"/></svg>
-<a class="constellation-node" style="--node-x:9%;--node-y:63%;--node-color:#a78bfa" href="#about"><span class="constellation-core">01</span><span class="constellation-label">About<small>My story</small></span></a>
-<a class="constellation-node" style="--node-x:32%;--node-y:27%;--node-color:#67e8f9" href="#skills"><span class="constellation-core">02</span><span class="constellation-label">Skills<small>My toolkit</small></span></a>
-<a class="constellation-node" style="--node-x:58%;--node-y:63%;--node-color:#f0abfc" href="#projects"><span class="constellation-core">03</span><span class="constellation-label">Projects<small>Selected work</small></span></a>
-<a class="constellation-node" style="--node-x:87%;--node-y:32%;--node-color:#86efac" href="#education"><span class="constellation-core">04</span><span class="constellation-label">Education<small>My direction</small></span></a>
+<div class="constellation-copy">
+<div class="eyebrow"><span class="live"></span> Interactive portfolio map</div>
+<h2 id="path-title">Follow the signal.<br><span class="gradient">Find your next stop.</span></h2>
+<p>Choose a point to explore my story, toolkit, projects, or education.</p>
+<div class="path-prompt"><span>SELECT A DESTINATION</span><span aria-hidden="true">↓</span></div>
+</div>
+<nav class="constellation-map" aria-label="Portfolio path">
+<svg class="constellation-lines" viewBox="0 0 900 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="route-stroke" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#8b5cf6"/><stop offset=".55" stop-color="#67e8f9"/><stop offset="1" stop-color="#f0abfc"/></linearGradient></defs><path class="route-halo" d="M105 178 C180 178 190 74 310 74 S430 182 535 178 S675 96 795 95"/><path class="route-track" d="M105 178 C180 178 190 74 310 74 S430 182 535 178 S675 96 795 95"/><path class="route-signal" d="M105 178 C180 178 190 74 310 74 S430 182 535 178 S675 96 795 95"/></svg>
+<a class="constellation-node" style="--node-x:12%;--node-y:69%;--node-color:#a78bfa" href="#about"><span class="constellation-core" aria-hidden="true">01</span><span class="constellation-label"><strong>About</strong><small>My story</small></span></a>
+<a class="constellation-node" style="--node-x:34%;--node-y:29%;--node-color:#67e8f9" href="#skills"><span class="constellation-core" aria-hidden="true">02</span><span class="constellation-label"><strong>Skills</strong><small>My toolkit</small></span></a>
+<a class="constellation-node" style="--node-x:59%;--node-y:69%;--node-color:#f0abfc" href="#projects"><span class="constellation-core" aria-hidden="true">03</span><span class="constellation-label"><strong>Projects</strong><small>What I’m exploring</small></span></a>
+<a class="constellation-node" style="--node-x:88%;--node-y:37%;--node-color:#86efac" href="#education"><span class="constellation-core" aria-hidden="true">04</span><span class="constellation-label"><strong>Education</strong><small>My direction</small></span></a>
 </nav>
 </div>
 </section>
@@ -134,6 +215,26 @@ h1{font-size:clamp(3.5rem,8vw,6.7rem);line-height:.94;letter-spacing:-.085em;mar
 </main>
 <footer class="wrap"><span>© <span id="year"></span> Taranpreet Singh</span><span>Curiosity in motion · Hosted on GitHub Pages</span></footer>
 <script>
+(() => {
+const intro=document.getElementById('entry-intro');
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let seen=false;
+try{seen=sessionStorage.getItem('taran-entry-seen-v2')==='1'}catch{}
+const finishImmediately=()=>{document.body.classList.add('entry-finished');if(intro)intro.remove()};
+if(!intro||reduced||seen){finishImmediately();return}
+try{sessionStorage.setItem('taran-entry-seen-v2','1')}catch{}
+const skip=intro.querySelector('.entry-skip');
+let ended=false;
+const finish=()=>{if(ended)return;ended=true;document.body.classList.remove('entry-active');document.body.classList.add('entry-finished');intro.classList.add('is-leaving');document.removeEventListener('keydown',onKey);window.setTimeout(()=>intro.remove(),540)};
+const onKey=event=>{if(event.key==='Escape'){event.preventDefault();finish()}else if(event.key==='Tab'){event.preventDefault();skip.focus({preventScroll:true})}};
+document.body.classList.add('entry-active');
+intro.classList.add('is-running');
+skip.addEventListener('click',finish);
+document.addEventListener('keydown',onKey);
+window.requestAnimationFrame(()=>skip.focus({preventScroll:true}));
+window.setTimeout(finish,2450);
+})();
+
 document.getElementById('year').textContent=new Date().getFullYear();
 const menuButton=document.querySelector('.menu-toggle');
 const navLinks=document.getElementById('navlinks');
