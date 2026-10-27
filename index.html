@@ -108,8 +108,9 @@ body.entry-active{overflow:hidden}
 .entry-ring-b{width:158px;height:158px;border-color:#67e8f958;transform:translate(-50%,-50%) rotateX(64deg) rotate(-22deg);animation:ringTurn 13s linear infinite reverse}
 .entry-monogram{position:relative;z-index:2;width:96px;height:96px;display:grid;place-items:center;border:1px solid #c4b5fd9c;border-radius:50%;background:radial-gradient(circle at 34% 27%,#a78bfa,#251a50 72%);color:#fff;font-size:3rem;font-weight:800;letter-spacing:-.1em;padding-right:5px;box-shadow:0 0 55px #8b5cf666,inset -12px -12px 26px #050610;opacity:0;animation:monogramArrive .78s .42s cubic-bezier(.16,1,.3,1) forwards}
 .entry-kicker{margin:13px 0 10px;color:var(--cyan);font:500 .62rem "DM Mono",monospace;letter-spacing:.18em;opacity:0;animation:entryFade .55s .68s ease forwards}
-.entry-title{margin:0;font-size:clamp(3.2rem,9vw,6.3rem);line-height:.86;letter-spacing:-.09em}
-.entry-title>span{display:block;overflow:hidden;clip-path:inset(0 0 100% 0);animation:entryWord .72s cubic-bezier(.2,.8,.2,1) forwards}
+.entry-title{margin:0;font-size:clamp(3.2rem,9vw,6.3rem);line-height:1.08;letter-spacing:-.075em;padding-bottom:.12em;max-width:100%;overflow:visible}
+.entry-title>span{display:block;overflow:visible;padding-bottom:.08em;clip-path:inset(0 0 110% 0);animation:entryWord .72s cubic-bezier(.2,.8,.2,1) forwards}
+.entry-title>span:last-child{padding-bottom:.16em}
 .entry-title>span:first-child{animation-delay:.72s}.entry-title>span:last-child{animation-delay:.9s}
 .entry-caption{margin:17px 0 22px;color:#aeb3c8;font-size:.83rem;line-height:1.6;opacity:0;animation:entryFade .62s 1.15s ease forwards}
 .entry-progress{width:170px;height:2px;overflow:hidden;border-radius:4px;background:#ffffff1c}
@@ -138,6 +139,7 @@ body.entry-finished .f2{animation-delay:.9s,-.5s,.9s}
 @media(prefers-reduced-motion:reduce){.entry-intro.is-running{display:none!important}body.entry-active{overflow:auto}}
 
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+@media(max-width:520px){.entry-frame{padding:24px 4px}.entry-title{font-size:clamp(3rem,14vw,4.6rem);line-height:1.1;letter-spacing:-.07em}.entry-title>span:last-child{padding-bottom:.18em}.entry-caption{max-width:330px}.entry-skip{top:14px;right:14px}}
 </style>
 </head>
 <body>
