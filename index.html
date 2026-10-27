@@ -174,6 +174,15 @@ body.entry-finished .f2{animation-delay:.9s,-.5s,.9s}
 @media(max-width:390px){.art{min-height:325px}.orb{width:250px;min-width:250px;min-height:250px}.float{max-width:78%;font-size:.84rem}}
 @media(prefers-reduced-motion:reduce){.orb:after{animation:none!important}.orb:before{filter:none}.project.is-touched{transform:none!important}}
 
+
+/* Keep floating info badges above the 3D orb instead of letting the sphere cover their text. */
+.art{position:relative;isolation:isolate;overflow:visible}
+.art .orb{position:relative;z-index:1}
+.art .float{z-index:10;max-width:min(260px,76%);overflow-wrap:break-word;pointer-events:auto}
+.art .f1{top:48px;right:0}
+.art .f2{bottom:42px;left:0}
+@media(max-width:760px){.art .float{max-width:78%;padding:11px 13px}.art .f1{top:20px;right:0}.art .f2{bottom:18px;left:0}}
+
 </style>
 </head>
 <body>
