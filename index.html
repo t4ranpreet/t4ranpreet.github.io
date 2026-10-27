@@ -88,5 +88,7 @@ navLinks.addEventListener('click',event=>{if(event.target.closest('a')){menuButt
 const nodes=document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.body.classList.add('motion-ready');const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.1});nodes.forEach(n=>io.observe(n));}else{nodes.forEach(n=>n.classList.add('show'))}
 </script>
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/10/27/13/20261027132319-EL2AL6YK.js" defer></script>
 </body>
 </html>
